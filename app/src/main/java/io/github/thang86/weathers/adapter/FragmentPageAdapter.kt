@@ -11,8 +11,8 @@ import io.github.thang86.weathers.ui.activity.detail.WeatherFragment
 class FragmentPageAdapter :
     FragmentStatePagerAdapter {
 
-    private lateinit var mContext: Context
-    private lateinit var mAddress: MutableList<Address>
+    private var mContext: Context
+    private var mAddress: MutableList<Address>
 
     companion object {
         private var NUM_ITEMS = 1
