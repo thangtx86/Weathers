@@ -3,11 +3,10 @@ package io.github.thang86.weathers.ui.activity.detail
 import io.github.thang86.weathers.R
 import io.github.thang86.weathers.core.BasePresenter
 import io.github.thang86.weathers.domain.model.Address
-import java.util.*
 
 class MainPresenter : BasePresenter<MainView>() {
     fun loadAddress() {
-        val addresses: MutableList<Address> = ArrayList<Address>()
+        val addresses: MutableList<Address> = mutableListOf()
         addresses.add(
             Address(
                 R.drawable.ic_cloud_white_24_dp,
