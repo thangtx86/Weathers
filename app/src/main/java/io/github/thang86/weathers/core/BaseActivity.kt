@@ -3,15 +3,10 @@ package io.github.thang86.weathers.core
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import io.github.thang86.weathers.R
+import kotlinx.android.synthetic.main.toolbar.*
 
 open class BaseActivity: AppCompatActivity(),BaseView {
-
-    private lateinit var mToolBar: Toolbar
-    private lateinit var mIconToolbar: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,29 +15,13 @@ open class BaseActivity: AppCompatActivity(),BaseView {
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        bindViews()
-    }
-
-    /**
-     * init view
-     */
-    open fun bindViews() {
-        mToolBar = findViewById<Toolbar>(R.id.toolbar)
-        mIconToolbar = findViewById(R.id.image_other)
         setupToolbar()
     }
 
     open fun setupToolbar() {
-        if (this.mToolBar != null) {
-            setSupportActionBar(mToolBar)
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
         }
-    }
-
-    /**
-     * get toolbar
-     */
-    open fun getToolBar():Toolbar{
-        return mToolBar
     }
 
     /**

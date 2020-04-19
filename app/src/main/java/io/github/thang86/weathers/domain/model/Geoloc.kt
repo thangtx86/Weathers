@@ -1,4 +1,5 @@
 package io.github.thang86.weathers.domain.model
+/*
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -11,4 +12,4 @@ data class Geoloc(
 
     @Json(name = "lat")
     val lat: Double? = null
-)
+)*/

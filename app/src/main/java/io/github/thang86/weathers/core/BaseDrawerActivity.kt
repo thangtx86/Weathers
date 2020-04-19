@@ -1,18 +1,14 @@
 package io.github.thang86.weathers.core
 
 import android.content.Intent
-import android.widget.ImageView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
-import io.github.thang86.weathers.R
 import io.github.thang86.weathers.ui.activity.search.SearchAreaActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.navigation_toolbar.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 abstract class BaseDrawerActivity : BaseActivity() {
-
-    open lateinit var mDrawer: DrawerLayout
-    private lateinit var mNavigationView: NavigationView
-    private lateinit var mBtnSeach: ImageView
 
     companion object {
         private const val SEARCH_AREA_REQUEST_CODE = 1
@@ -24,23 +20,18 @@ abstract class BaseDrawerActivity : BaseActivity() {
         setNavigationItemSelected()
     }
 
-    override fun bindViews() {
-        super.bindViews()
-        mDrawer = findViewById(R.id.drawer_layout)
-        mBtnSeach = findViewById(R.id.btn_search_location)
-        val btnPrev = findViewById<ImageView>(R.id.btn_prever)
-        mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        mNavigationView = findViewById(R.id.nav_view)
-        mBtnSeach.setOnClickListener {
+    fun bindViews() {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        btnSearchLocation.setOnClickListener {
             openCloseDrawer(false)
             startActivity()
         }
-        btnPrev.setOnClickListener { mDrawer.closeDrawers() }
+        btnPrever.setOnClickListener { drawerLayout.closeDrawers() }
     }
 
     override fun onResume() {
         super.onResume()
-        mDrawer.closeDrawers()
+        drawerLayout.closeDrawers()
     }
 
     /**
@@ -53,8 +44,8 @@ abstract class BaseDrawerActivity : BaseActivity() {
 
     override fun setupToolbar() {
         super.setupToolbar()
-        if (getToolBar() != null) {
-            getToolBar().findViewById<ImageView>(R.id.image_other).setOnClickListener {
+        if (toolbar != null) {
+            image_other.setOnClickListener {
                 openCloseDrawer(false)
             }
         }
@@ -65,11 +56,11 @@ abstract class BaseDrawerActivity : BaseActivity() {
      *  if isBackPress == true when tab button back
      */
     private fun openCloseDrawer(isBackPress: Boolean) {
-        if (mDrawer.isDrawerOpen(GravityCompat.END)) {
-            mDrawer.closeDrawer(GravityCompat.END)
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END)
         } else {
             if (!isBackPress) {
-                mDrawer.openDrawer(GravityCompat.END)
+                drawerLayout.openDrawer(GravityCompat.END)
             } else {
                 super.onBackPressed()
             }

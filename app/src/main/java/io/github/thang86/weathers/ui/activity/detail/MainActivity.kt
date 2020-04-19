@@ -1,26 +1,21 @@
 package io.github.thang86.weathers.ui.activity.detail
 
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.navigation.NavigationView
 import io.github.thang86.weathers.R
 import io.github.thang86.weathers.adapter.FragmentPageAdapter
 import io.github.thang86.weathers.adapter.NavigationAdapter
 import io.github.thang86.weathers.core.BaseDrawerActivity
 import io.github.thang86.weathers.domain.model.Address
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : BaseDrawerActivity(), MainView {
     private lateinit var adapter: NavigationAdapter
     private var mListAddress: MutableList<Address> = mutableListOf()
     private lateinit var presenter: MainPresenter
-    private lateinit var mViewPager: ViewPager
-    private lateinit var mAdapterPage:FragmentPageAdapter
+    private lateinit var mAdapterPage: FragmentPageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +30,7 @@ class MainActivity : BaseDrawerActivity(), MainView {
         if (mListAddress.isNullOrEmpty()) {
             return
         }
-        mViewPager = findViewById(R.id.viewpager)
-        mAdapterPage = FragmentPageAdapter(supportFragmentManager,this,mListAddress)
+        mAdapterPage = FragmentPageAdapter(supportFragmentManager, this, mListAddress)
         viewpager.adapter = mAdapterPage
 
     }
@@ -50,17 +44,15 @@ class MainActivity : BaseDrawerActivity(), MainView {
 
     override fun setNavigationItemSelected() {
         // infilate view for item
-        val vNavigation = findViewById<NavigationView>(R.id.nav_view)
-        val recycleView: RecyclerView = vNavigation.findViewById(R.id.menurv)
         adapter = NavigationAdapter(this, mListAddress)
-        recycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recycleView.adapter = adapter
+        menurv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        menurv.adapter = adapter
 
         // set event onclick for item of navigation
         adapter?.setItemClickListener(object : NavigationAdapter.ItemClickListener {
             override fun onItemClick(position: Int) {
-                mDrawer.closeDrawers()
-                mViewPager.currentItem = position
+                drawerLayout.closeDrawers()
+                viewpager.currentItem = position
                 Toast.makeText(
                     applicationContext,
                     mListAddress[position].address.toString() + " Menu Clicked !",
