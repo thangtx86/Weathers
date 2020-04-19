@@ -1,6 +1,7 @@
 package io.github.thang86.weathers.ui.activity.detail
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,7 +50,6 @@ class MainActivity : BaseDrawerActivity(), MainView {
 
     override fun setNavigationItemSelected() {
         // infilate view for item
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         val vNavigation = findViewById<NavigationView>(R.id.nav_view)
         val recycleView: RecyclerView = vNavigation.findViewById(R.id.menurv)
         adapter = NavigationAdapter(this, mListAddress)
@@ -59,7 +59,7 @@ class MainActivity : BaseDrawerActivity(), MainView {
         // set event onclick for item of navigation
         adapter?.setItemClickListener(object : NavigationAdapter.ItemClickListener {
             override fun onItemClick(position: Int) {
-                drawerLayout.closeDrawers()
+                mDrawer.closeDrawers()
                 mViewPager.currentItem = position
                 Toast.makeText(
                     applicationContext,

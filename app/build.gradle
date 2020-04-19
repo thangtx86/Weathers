@@ -27,6 +27,8 @@ android {
             buildConfigField "long", "BUILD_DATE", System.currentTimeMillis() + "L"
             buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
             buildConfigField("String", "API_KEY", "\"cefad8d1bd8e37ec1294ab8508e73333\"")
+            buildConfigField("String", "ALGOLIAL_API_KEY", "\"0cac681612f5a4af5579f6ddb92d7390\"")
+            buildConfigField("String", "ALGOLIAL_ID", "\"1QZQOBUS7A\"")
         }
     }
     compileOptions {
@@ -56,11 +58,28 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'com.android.support:palette-v7:29.0.0'
 
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.18'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+    implementation 'com.mikhaellopez:rxanimation:0.0.6'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
 
     //Picaso
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Algolia Search
+    implementation 'com.algolia:algoliasearch-android:3.+'
+
+    // Moshi
+    implementation 'com.squareup.retrofit2:converter-moshi:2.7.2'
+    implementation 'com.squareup.moshi:moshi:1.9.2'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.9.2'
+    implementation 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
 }

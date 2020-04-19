@@ -38,10 +38,16 @@ open class BaseActivity: AppCompatActivity(),BaseView {
         }
     }
 
+    /**
+     * get toolbar
+     */
     open fun getToolBar():Toolbar{
         return mToolBar
     }
 
+    /**
+     * hide status bar
+     */
     private fun hideStatusBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
