@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.search.SearchAreaActivity"></activity>
+        <activity android:name=".ui.activity.search.SearchAreaActivity">
+            <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCXJPXHU81of2M1Q9lybmI70sl4wAzDplY"/>
+        </activity>
         <activity android:name=".ui.activity.detail.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
